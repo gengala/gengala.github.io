@@ -1,688 +1,260 @@
 <html>
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>GG's webpage</title>
-    <style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 3px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.column-list {
-	display: flex;
-	justify-content: space-between;
-}
-
-.column {
-	padding: 0 1em;
-}
-
-.column:first-child {
-	padding-left: 0;
-}
-
-.column:last-child {
-	padding-right: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-	border-collapse: collapse;
-}
-
-table {
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-    margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-block;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1.25em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(55, 53, 47, 1);
-}
-.highlight-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.highlight-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.highlight-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.highlight-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.highlight-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.highlight-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.highlight-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.highlight-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.highlight-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.highlight-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.highlight-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.highlight-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.highlight-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.highlight-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.highlight-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.block-color-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.block-color-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.block-color-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.block-color-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.block-color-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.block-color-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.block-color-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.block-color-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.block-color-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.block-color-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.block-color-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.block-color-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
-.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
-.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
-.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
-.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
-.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
-.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
-.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
-.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
-.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
-.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
-.select-value-color-pageGlass { background-color: undefined; }
-.select-value-color-washGlass { background-color: undefined; }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-</style>
-</head>
-<body>
-<article id="82a8e165-ff81-456f-ad94-a3ecd6a5fb7f" class="page sans"><header><h1 class="page-title">Gennaro Gala</h1><p class="page-description"></p></header><div class="page-body"><p id="a505e230-a8bc-42dd-aabd-08944660c754" class=""><em>PhD candidate in Probabilistic Machine Learning @ <a href="https://www.tue.nl/en/">TU/e</a> </em></p><div id="cffef261-284e-47c4-90a5-a5ca6334ca35" class="column-list"><div id="809011c0-d88a-4d25-a9b5-4b2884c5ae62" class="column" style="width:300px"><figure id="50832ab7-64b8-4b18-a99a-f2d39092f982" class="image" style="text-align:center"><a href="media/gengala.png"><img style="width:288px" src="media/gengala.png"></a></figure></div><div id="a9d7ac47-a39d-4d9c-b6d7-3c3519875138" class="column" style="width:600px"><figure id="2ee12f19-96a8-464d-b9d2-c85f44ed8701" class="block-color-gray_background callout" style="width:430px;"><div style="width:380px;">Hi there! 👋🏼  <br><br>I'm Gennaro, a deep learner working on tractable/self-organizing generative modelling. I have broad interests in (equivariant) <strong>deep learning </strong>and particularly like <strong>generative models</strong> as VAEs, GANs, flows, diffusion, tractable probabilistic models; and <strong>architectures</strong> as GNNs, transformers, and vector quantized models.</div></figure></div></div><p id="c62639be-ca2e-4d6c-92cc-bb2c8f2b65e2" class="">            <a href="mailto:adalovelace@mail.com">📧 gennarogala1396@gmail.com</a>         <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="double-struck">X</mi></mrow><annotation encoding="application/x-tex">\mathbb{X}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">X</span></span></span></span></span><span>﻿</span></span>  <a href="http://x.com/gengala13">gengala13</a>                   <a href="https://github.com/gengala"><i class="fa fa-github" style="font-size:24px"></i> github.com/gengala</a></p><p id="91137fbc-637b-4db5-b863-4dfe5afd91ca" class="">                                         🎓 <a href="https://scholar.google.com/citations?user=TGxSR8IAAAAJ&amp;hl=en">google scholar</a>                  📰 <strong><a href="https://drive.google.com/file/d/1wfVBZ7flEyCvCs6HkUpQSqm6zg7PGjwu/view?usp=drive_link">Curriculum Vitae</a></strong><strong> </strong></p><hr id="d2d28100-afb5-4400-a26b-336f64f568fc"><h1 id="04d02458-7857-43ac-a418-fbf25d9b87fd" class="">🎓&nbsp;<strong>Education</strong></h1><h3 id="38232323-59dc-415c-81c7-5c696a582cbb" class="">PhD candidate at <mark class="highlight-blue"><a href="https://uai.win.tue.nl/">UAI group</a></mark></h3><p id="ace691ca-a679-4f21-8644-fd34ad94f021" class=""><em>Apr 2021 - Apr 2025,  Eindhoven University of Technology (NL) </em></p><h3 id="690744d1-75be-4c68-8f5a-f9b9521188f6" class="">Master's Degree in Computer Science &amp; Machine Intelligence</h3><p id="1bb5b437-7aaa-4017-b4fa-92bc266f0baf" class=""><em>Oct 2018 - Dec 2020,  University of Bari Aldo Moro (IT) </em></p><p id="97c2bbe9-2634-4010-b3e6-ad6278449e1c" class="">110/110 <em>with honors</em> (higher possible grade) </p><h3 id="2fcff6ac-15b2-4645-a24d-e863dd0c7b4a" class="">Bachelor's Degree in Computer Science</h3><p id="0b79e8c8-d8a1-495c-b9ac-94a33408f606" class="block-color-gray"><mark class="highlight-default"><em>Oct 2015 - Oct 2018,  University of Bari Aldo Moro (IT) </em></mark></p><p id="6090947b-8ca0-4bf5-a2f3-a8209e0eb27c" class="">110/110 <em>with honors</em> (higher possible grade) </p><hr id="22606a5e-a50b-4e8a-b863-8598acf60c13"><h1 id="3627ce8d-ba02-4679-9ff6-f5b259209b37" class="">💼 <strong>Experience</strong></h1><h3 id="be82297a-60b1-4f4b-9cec-4b830f69e640" class="">Intern @ Italian National Research Council</h3><p id="50519ddb-1d2f-47a8-86de-38eddf459842" class="block-color-gray"><em>Bari, Italy – (Mar 2018 - Sep 2018)</em></p><p id="97d29eb8-ff41-4cd6-aad1-705fd65ad8ce" class="">Intern researcher working on ML for marine biology 🐬</p><hr id="3a5848d0-10a6-4769-af65-f82db789775f"><h1 id="cc89df2b-54e1-453a-ab8b-b5fe26e8517b" class="">📚&nbsp;<strong>Selected Publications</strong></h1><h2 id="ca87154c-c9c7-403a-a028-336e01dd1fa5" class="">Scaling Continuous Latent Variable Models<br>as Probabilistic Integral Circuits <br></h2><p id="b76e6931-efff-4e72-9760-1f031db4eeca" class=""><em><strong>Gennaro Gala</strong></em><em>, Cassio de Campos, Antonio Vergari, Erik Quaeghebeur</em></p><div id="ff6ca2d2-7ec6-4983-a610-8e37079a5243" class="column-list"><div id="d6c8b440-771d-4904-be5f-7f841b08d0c0" style="width:50%" class="column"><p id="3b1308f2-b719-41e0-81ea-6dbd809a779d" ><strong>TL; DR: </strong>We provide a comprehensive pipeline to build and scale hierarchical continuous latent variable models through the lenses of DAG-shaped probabilistic (integral) circuits</p><h3 id="1390cf94-1ecd-4573-bbeb-5547c12c5fb5" class="">📄 <a href="https://openreview.net/forum?id=Ke40kfOT2E">Spotlight at NeurIPS 2024</a>  <i class="fa fa-github" style="font-size:24px"></i> <a href="https://github.com/gengala/ten-pics">ten-pics</a>  </h3></div><div id="57be836c-ec8a-438f-9af1-1a3c3259fcdb" style="width:50%" class="column"><figure id="57187864-0e60-46c3-9a62-abed7ecf075a" class="image"><a href="media/dag_pic.png"><img style="width:240px" src="media/dag_pic.png"></a></figure></div></div><div id="03b11a09-3326-4460-bb17-8063be241916" class="column-list"><div id="e5092ce0-d760-4735-8b7f-f97745f652a4" style="width:50%" class="column"><h2 id="c4b8aafc-e779-43ba-aee4-db8d1cb6f79e" class="">Probabilistic Integral Circuits</h2><p id="d83e9150-4437-4909-a521-0f08e2c92c98" class=""><strong><em>Gennaro Gala</em></strong><em>, Cassio de Campos, Robert Peharz, Antonio Vergari, Erik Quaeghebeur</em></p><p id="ff26bdb5-8b25-40c1-a829-f8428a568932" class=""><strong>TL; DR: </strong>We add integral units to the language of tractable circuits to represent continuous latent variables and learn hierarchical tree-shaped neural continuous mixtures</p><h3 id="d2bd1ed4-e1c5-4d15-a861-2e75e979ad9f" class="">📄 <a href="https://proceedings.mlr.press/v238/gala24a.html">AISTATS paper</a>  <i class="fa fa-github" style="font-size:24px"></i> <a href="https://github.com/gengala/pic">gengala/pic</a></h3></div><div id="84ba1cce-c412-42f8-9787-306c06cc88c8" style="width:50%" class="column"><p id="fce1d61f-d1fb-46ea-801f-8553684097d4" class="">
-</p><figure id="095ec6d7-afb5-4a26-a432-99f70abafe39" class="image"><a href="media/tree_pic.png"><img style="width:240px" src="media/tree_pic.png"></a></figure></div></div><h2 id="ec9ec01c-05bb-4983-b8f1-71ee35fb2cda" class="">E(n)-equivariant Graph Neural Cellular Automata</h2><p id="e2ff440e-9347-4952-b851-f0c4cc7e1eab" class=""><strong><em>Gennaro Gala</em></strong><em>, Daniele Grattarola, Erik Quaeghebeur</em></p><div id="61158aae-5976-425e-9157-cb7b65866c4f" class="column-list"><div id="8b4e492b-65d7-41d3-a7b0-bb78f6654b5e" style="width:50%" class="column"><p id="0538b04c-cdab-4ebd-b43f-d776f98c4b41" class=""><strong>TL; DR: </strong>By replacing standard graph convolutions with E(n)-equivariant ones, we design and propose a class of isotropic automata that we call E(n)-GNCAs. These models are lightweight, but can nevertheless handle large graphs, capture complex dynamics and exhibit emergent self-organising behaviours.</p><h3 id="9db1aeec-f99b-4da7-ad7c-997b21573f34" class="">📄 <a href="https://openreview.net/forum?id=7PNJzAxkij">TMLR paper</a>  <i class="fa fa-github" style="font-size:24px"></i> <a href="https://github.com/gengala/egnca">gengala/egnca</a></h3></div><div id="4b1ad542-adda-4e6a-b45a-dc9376ea5448" style="width:50%" class="column"><figure id="86a68c06-062c-41a1-9436-b55862ecca18" class="image"><a href="media/torus.gif"><img style="width:240px" src="media/torus.gif"></a></figure><p id="4d75c613-b044-46d8-89e4-9d9024253d82" class="">
-</p></div></div><h2 id="a222f503-f599-4c9c-bf20-7d8c6642b3a7" class="">Continuous mixtures of tractable probabilistic models</h2><p id="80a47206-d84a-41b0-b915-79c88e83b1af" class=""><em>Alvaro H.C. Correia*, </em><strong><em>Gennaro Gala</em></strong><em>*, Erik Quaeghebeur, Cassio de Campos, Robert Peharz</em> </p><div id="c2180110-6418-46e2-bd6b-f7423ab173ca" class="column-list"><div id="3fe0326f-fc46-48ad-b240-04943db7ea5e" style="width:50%" class="column"><p id="cb257d58-8b71-406c-9520-8af8502a10d6" class=""><strong>TL; DR: </strong>We investigate a hybrid approach: (small-dimensional) continuous intractable mixtures of tractable probabilistic models. While these models are analytically intractable, they are amenable to numerical integration schemes based on a finite set of integration points. </p><h3 id="9af49f7a-9a9b-41c7-8522-3434c0b8a646" class="">📄 <a href="https://ojs.aaai.org/index.php/AAAI/article/view/25883">AAAI paper</a>  <i class="fa fa-github" style="font-size:24px"></i> <a href="https://github.com/AlCorreia/cm-tpm">AlCorreia/cm-tpm</a></h3></div><div id="cf9670e9-c396-4290-9d79-8786075b70f2" style="width:50%" class="column"><figure id="78f45254-386a-4386-ac7a-11959cd95870" class="image"><a href="media/cm.png"><img style="width:240px" src="media/cm.png"></a></figure><p id="3e762d02-02ac-4323-8d1c-65a3555dfba6" class="">
-</p></div></div><h2 class="">What is the Relationship between Tensor Factorizations <br>and Circuits (and How Can We Exploit it)?</h2><p class=""><em>Lorenzo Loconte*, </em><em>Antonio Mari*, </em><strong><em>Gennaro Gala</em></strong><em>*,<br>Robert Peharz, Cassio de Campos, Erik Quaeghebeur, Gennaro Vessio, Antonio Vergari</em> </p><div class="column-list"><div style="width:50%" class="column"><p class=""><strong>TL; DR: </strong>This paper establishes a rigorous connection between circuits and tensor factorizations, two seemingly distinct yet fundamentally related areas. By connecting these  fields, we highlight a series of opportunities that can benefit both communities. Our work  generalizes popular tensor factorizations within the circuit language. </p><h3 class="">📄 <a href="https://arxiv.org/abs/2409.07953">arxiv preprint (under review)</a> </h3></div><div style="width:50%" class="column"><figure class="image"><a href="media/cm.png"><img style="width:380px" src="media/tn2pc.png"></a></figure><p class="">
-</p></div></div><h2 id="c04becef-b395-4637-8277-9cf1832a6efd" class="">Bayesian Structure Scores for Probabilistic Circuits</h2><p id="d908e7dd-68f1-498b-aece-c75df6e86b3c" class=""><em>Yang Yang*, </em><em><strong>Gennaro Gala</strong></em><em>*, Robert Peharz</em></p><div id="7f30d7fe-2001-4167-9755-28fb945dfddd" class="column-list"><div id="61d16532-4c02-4f53-85f3-a6c12b8bfc66" style="width:37.5%" class="column"><p id="2f1c24f4-25c8-48d7-b8e5-2fe115e6bb7b" class=""><strong>TL; DR: </strong>We develop Bayesian structure scores for deterministic PCs, i.e., the structure likelihood with parameters marginalized out, which are well known as rigorous objectives for structure learning in probabilistic graphical models.</p><h3 id="61f1a641-b31b-4010-a1a5-155b90bc54ec" class="">📄 <a href="https://proceedings.mlr.press/v206/yang23a">AISTATS paper</a>  </h3></div><div id="0d1f3dde-c8e6-4bd6-9f09-dfa7da3f25e9" style="width:62.5%" class="column"><figure id="8f8a2ee2-a2bf-4101-abd7-f0019b005ed0" class="image"><a href="media/cnet.png"><img style="width:336px" src="media/cnet.png"></a></figure></div></div><hr id="ff54f381-7fd2-4d6e-a2c3-67d041965ff3"><h1 id="31762b5e-a547-4e43-a94c-78965eabcdba" class="">🛠️&nbsp;<strong>Skills</strong></h1><ul id="4de7b234-94c9-4cb8-9e67-1eeec61eb646" class="bulleted-list"><li style="list-style-type:disc">[<strong>Probabilistic Models</strong>]    [<strong>Deep Learning</strong>]   [<strong>Generative AI</strong>]   [<strong>Neural Cellular Automata</strong>]</li></ul><ul id="ae084d7a-8973-4e7a-85e8-e6fa5a76e32c" class="bulleted-list"><li style="list-style-type:disc">[<strong>pytorch</strong>]   [<strong>lightning</strong>]   [<strong>python</strong>]   [<strong>C/c++</strong>]   [<strong>MATLAB</strong>]   [<strong>TensorFlow</strong>]  [<strong>sklearn</strong>]<br><br></li></ul><hr id="0691684e-2326-4d27-94ed-43440bcb1e12"></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+   <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>GG</title>
+      <style>
+         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+         html {
+         -webkit-print-color-adjust: exact;
+         height: 100%;
+         }
+         * {
+         box-sizing: border-box;
+         -webkit-print-color-adjust: exact;
+         }
+         body {
+         margin: 0;
+         padding: 2em;
+         font-family: 'Inter', sans-serif;
+         line-height: 1.6;
+         background-color: #ffffff;
+         text-align: center;
+         color: #333;
+         }
+         article {
+         max-width: 900px;
+         margin: 0 auto;
+         }
+         header {
+         text-align: left;
+         }
+         .page-body {
+         text-align: left;
+         }
+         .column-list {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 20px;
+         justify-content: flex-start;
+         text-align: left;
+         }
+         .content {
+         text-align: left;
+         }
+         a {
+         color: #0073e6;
+         text-decoration: none;
+         font-weight: 500;
+         }
+         a:hover {
+         text-decoration: underline;
+         }
+         h1, h2, h3 {
+         letter-spacing: -0.01em;
+         line-height: 1.3;
+         font-weight: 700;
+         margin-bottom: 0.5em;
+         }
+         .page-title {
+         font-size: 2.5rem;
+         font-weight: 800;
+         margin: 0 0 0.2em;
+         }
+         h1 { font-size: 2rem; margin-top: 2rem; }
+         h2 { font-size: 1.75rem; margin-top: 1.75rem; }
+         h3 { font-size: 1.5rem; margin-top: 1.5rem; }
+         .indented {
+         padding-left: 1.5em;
+         }
+         hr {
+         width: 100%;
+         height: 1px;
+         border: none;
+         background: rgba(55, 53, 47, 0.2);
+         }
+         img {
+         max-width: 100%;
+         border-radius: 8px;
+         }
+         @media print {
+         img {
+         max-height: 100vh;
+         object-fit: contain;
+         }
+         }
+         @page {
+         margin: 1in;
+         }
+         ol, ul {
+         margin: 0.6em 0;
+         padding-left: 1.6em;
+         }
+         ul > li, ol > li {
+         padding-left: 0.2em;
+         }
+         blockquote {
+         font-size: 1.25em;
+         margin: 1em 0;
+         padding-left: 1em;
+         border-left: 4px solid rgb(55, 53, 47);
+         font-style: italic;
+         color: #333;
+         }
+         code {
+         background: rgba(135, 131, 120, 0.15);
+         border-radius: 5px;
+         padding: 0.3em 0.5em;
+         font-size: 0.9em;
+         font-family: 'Courier New', monospace;
+         color: #d63384;
+         }
+         p {
+         margin: 0.7em 0;
+         }
+      </style>
+   </head>
+   <body>
+      <article class="page sans">
+         <header>
+            <h1 class="page-title">Gennaro Gala, PhD</h1>
+            <p><em>AI research engineer for foundation models @ <a href="https://openml.org/">OpenML</a> & <a href="https://www.tue.nl/en/">TU/e</a></em></p>
+         </header>
+         <div class="page-body">
+            <br>
+            <div style="display: flex; align-items: flex-start;">
+              <div style="flex: 0 0 300px;">
+                <figure class="image" style="margin: 0;">
+                  <a href="media/gengala.png">
+                    <img src="media/gengala.png" style="width:288px;" alt="Gennaro image">
+                  </a>
+                </figure>
+              </div>
+              <div style="flex: 1; padding-left: 20px;">
+                <div style="max-width: 600px;">
+                  <div style="width:450px;">
+                    Hi there! 👋🏼  <br><br>
+                    I'm an AI/ML researcher and deep learner working on probabilistic modeling and open-source foundation models.
+                    I have broad interests deep learning and particularly like generative models as VAEs, GANs, flows, diffusion, tractable probabilistic models;
+                    and architectures as GNNs, transformers, vector quantized models, and tensor networks.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <p>
+              📧 <a href="mailto:gennarogala1396@gmail.com"> gennarogala1396@gmail.com</a>&nbsp;&nbsp;&nbsp;
+              𝕏 <a href="https://x.com/gengala13"> gengala13</a>&nbsp;&nbsp;&nbsp;
+              <i class="fa fa-github" style="font-size:24px"></i> <a href="https://github.com/gengala"> gengala</a>&nbsp;&nbsp;&nbsp;
+              🎓 <a href="https://scholar.google.com/citations?user=TGxSR8IAAAAJ">scholar</a>&nbsp;&nbsp;&nbsp;
+              📰 <a href="https://drive.google.com/file/d/1wfVBZ7flEyCvCs6HkUpQSqm6zg7PGjwu/edit">résumé</a>
+            </p>
+            <hr>
+            <h1 class="">💼 <strong>Experience</strong></h1>
+            <h3 class="">AI research engineer @ <a href="https://openml.org/">OpenML</a> & <a href="https://www.tue.nl/en/">TU/e</a></h3>
+            <p class="block-color-gray"><em>Eindhoven, NL – (Mar 2025 - Present)</em></p>
+            <p class="">Advisor: <a href="https://joaquinvanschoren.github.io/home/">Dr. Joaquin Vanschoren</a></p>
+            <h3 class="">PhD researcher in AI & Probabilistic Machine Learning</h3>
+            <p class=""><em>Apr 2021 - Mar 2025,  <a href="https://uai.win.tue.nl/">UAI group</a> @ Eindhoven University of Technology (NL) </em></p>
+            <h3 class="">Intern @ Italian National Research Council</h3>
+            <p class="block-color-gray"><em>Bari, IT – (Mar 2018 - Sep 2018)</em></p>
+            <p class="">Intern researcher working on ML for marine biology 🐬</p>
+            <hr>
+            <h1 class="">🎓&nbsp;<strong>Education</strong></h1>
+            <h3 class="">PhD researcher in AI & Probabilistic Machine Learning</h3>
+            <p class=""><em>Apr 2021 - Mar 2025,  <a href="https://uai.win.tue.nl/">UAI group</a> @ Eindhoven University of Technology (NL) </em></p>
+            <p class="">Supervisors: <a href="https://research.tue.nl/en/persons/erik-quaeghebeur">Dr. Erik Quaeghebeur</a>, <a href="https://www.tue.nl/en/research/researchers/cassio-de-campos">prof. Cassio de Campos</a></p>
+            <p class="">Advisors: <a href="http://nolovedeeplearning.com/">Dr. Antonio Vergari</a>, <a href="https://robert-peharz.github.io/">Dr. Robert Peharz</a></p>
+            <h3 class="">Master's Degree in Computer Science &amp; Machine Intelligence</h3>
+            <p class=""><em>Oct 2018 - Dec 2020,  University of Bari Aldo Moro (IT) </em></p>
+            <p class="">110/110 <em>with honors</em> (higher possible grade) </p>
+            <h3 class="">Bachelor's Degree in Computer Science</h3>
+            <p class="block-color-gray"><em>Oct 2015 - Oct 2018,  University of Bari Aldo Moro (IT) </em></p>
+            <p class="">110/110 <em>with honors</em> (higher possible grade) </p>
+            <hr>
+            <h1 class="">🛠️&nbsp;<strong>Skills and Tools</strong></h1>
+            <ul class="bulleted-list">
+               <li style="list-style-type:disc">[<strong>Deep Learning</strong>] [<strong>Machine Learning</strong>] [<strong>Probabilistic Modeling</strong>] [<strong>Generative AI</strong>] [<strong>Tensor Networks</strong>]</li>
+            </ul>
+            <ul class="bulleted-list">
+               <li style="list-style-type:disc">[<strong>pytorch</strong>] [<strong>lightning</strong>] [<strong>python</strong>] [<strong>C/C++</strong>] [<strong>TensorFlow</strong>] [<strong>sklearn</strong>]<br><br></li>
+            </ul>
+            <!--
+            <hr>
+            <h1 class="">📚&nbsp;<strong>Selected Publications</strong></h1>
+            <h2 class="">Scaling Continuous Latent Variable Models<br>as Probabilistic Integral Circuits <br></h2>
+            <p class=""><em><strong>Gennaro Gala</strong></em><em>, Cassio de Campos, Antonio Vergari, Erik Quaeghebeur</em></p>
+            <div class="column-list">
+               <div style="width:50%" class="column">
+                  <p><strong>TL; DR: </strong>We provide a comprehensive pipeline to build and scale hierarchical continuous latent variable models through the lenses of DAG-shaped probabilistic (integral) circuits</p>
+                  <h3 class="">📄 <a href="https://openreview.net/forum?id=Ke40kfOT2E">Spotlight at NeurIPS 2024</a>  <i class="fa fa-github" style="font-size:24px"></i> <a href="https://github.com/gengala/ten-pics">ten-pics</a>  </h3>
+               </div>
+               <div style="width:50%" class="column">
+                  <figure class="image"><a href="media/dag_pic.png"><img style="width:240px" src="media/dag_pic.png"></a></figure>
+               </div>
+            </div>
+            <div class="column-list">
+               <div style="width:50%" class="column">
+                  <h2 class="">Probabilistic Integral Circuits</h2>
+                  <p class=""><strong><em>Gennaro Gala</em></strong><em>, Cassio de Campos, Robert Peharz, Antonio Vergari, Erik Quaeghebeur</em></p>
+                  <p class=""><strong>TL; DR: </strong>We add integral units to the language of tractable circuits to represent continuous latent variables and learn hierarchical tree-shaped neural continuous mixtures</p>
+                  <h3 class="">📄 <a href="https://proceedings.mlr.press/v238/gala24a.html">AISTATS paper</a>  <i class="fa fa-github" style="font-size:24px"></i> <a href="https://github.com/gengala/pic">gengala/pic</a></h3>
+               </div>
+               <div style="width:50%" class="column">
+                  <p class=""></p>
+                  <figure class="image"><a href="media/tree_pic.png"><img style="width:240px" src="media/tree_pic.png"></a></figure>
+               </div>
+            </div>
+            <h2 class="">E(n)-equivariant Graph Neural Cellular Automata</h2>
+            <p class=""><strong><em>Gennaro Gala</em></strong><em>, Daniele Grattarola, Erik Quaeghebeur</em></p>
+            <div class="column-list">
+               <div style="width:50%" class="column">
+                  <p class=""><strong>TL; DR: </strong>By replacing standard graph convolutions with E(n)-equivariant ones, we design and propose a class of isotropic automata that we call E(n)-GNCAs. These models are lightweight, but can nevertheless handle large graphs, capture complex dynamics and exhibit emergent self-organising behaviours.</p>
+                  <h3 class="">📄 <a href="https://openreview.net/forum?id=7PNJzAxkij">TMLR paper</a>  <i class="fa fa-github" style="font-size:24px"></i> <a href="https://github.com/gengala/egnca">gengala/egnca</a></h3>
+               </div>
+               <div style="width:50%" class="column">
+                  <figure class="image"><a href="media/torus.gif"><img style="width:240px" src="media/torus.gif"></a></figure>
+                  <p class=""></p>
+               </div>
+            </div>
+            <h2 class="">Continuous mixtures of tractable probabilistic models</h2>
+            <p class=""><em>Alvaro H.C. Correia*, </em><strong><em>Gennaro Gala</em></strong><em>*, Erik Quaeghebeur, Cassio de Campos, Robert Peharz</em> </p>
+            <div class="column-list">
+               <div style="width:50%" class="column">
+                  <p class=""><strong>TL; DR: </strong>We investigate a hybrid approach: (small-dimensional) continuous intractable mixtures of tractable probabilistic models. While these models are analytically intractable, they are amenable to numerical integration schemes based on a finite set of integration points. </p>
+                  <h3 class="">📄 <a href="https://ojs.aaai.org/index.php/AAAI/article/view/25883">AAAI paper</a>  <i class="fa fa-github" style="font-size:24px"></i> <a href="https://github.com/AlCorreia/cm-tpm">AlCorreia/cm-tpm</a></h3>
+               </div>
+               <div style="width:50%" class="column">
+                  <figure class="image"><a href="media/cm.png"><img style="width:240px" src="media/cm.png"></a></figure>
+                  <p class=""></p>
+               </div>
+            </div>
+            <h2 class="">What is the Relationship between Tensor Factorizations <br>and Circuits (and How Can We Exploit it)?</h2>
+            <p class=""><em>Lorenzo Loconte*, </em><em>Antonio Mari*, </em><strong><em>Gennaro Gala</em></strong><em>*,<br>Robert Peharz, Cassio de Campos, Erik Quaeghebeur, Gennaro Vessio, Antonio Vergari</em> </p>
+            <div class="column-list">
+               <div style="width:50%" class="column">
+                  <p class=""><strong>TL; DR: </strong>This paper establishes a rigorous connection between circuits and tensor factorizations, two seemingly distinct yet fundamentally related areas. By connecting these  fields, we highlight a series of opportunities that can benefit both communities. Our work  generalizes popular tensor factorizations within the circuit language. </p>
+                  <h3 class="">📄 <a href="https://arxiv.org/abs/2409.07953">arxiv preprint (under review)</a> </h3>
+               </div>
+               <div style="width:50%" class="column">
+                  <figure class="image"><a href="media/cm.png"><img style="width:380px" src="media/tn2pc.png"></a></figure>
+                  <p class=""></p>
+               </div>
+            </div>
+            <h2 class="">Bayesian Structure Scores for Probabilistic Circuits</h2>
+            <p class=""><em>Yang Yang*, </em><em><strong>Gennaro Gala</strong></em><em>*, Robert Peharz</em></p>
+            <div class="column-list">
+               <div style="width:37.5%" class="column">
+                  <p class=""><strong>TL; DR: </strong>We develop Bayesian structure scores for deterministic PCs, i.e., the structure likelihood with parameters marginalized out, which are well known as rigorous objectives for structure learning in probabilistic graphical models.</p>
+                  <h3 class="">📄 <a href="https://proceedings.mlr.press/v206/yang23a">AISTATS paper</a></h3>
+               </div>
+               <div style="width:62.5%" class="column">
+                  <figure class="image"><a href="media/cnet.png"><img style="width:336px" src="media/cnet.png"></a></figure>
+               </div>
+            </div>
+            -->
+         </div>
+      </article>
+      <span class="sans" style="font-size:14px;padding-top:2em"></span>
+   </body>
+</html>
